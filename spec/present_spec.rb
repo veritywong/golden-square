@@ -17,4 +17,16 @@ RSpec.describe Present do
         end
     end
 
+    it "wraps content" do
+        present = Present.new
+        result = present.wrap(2)
+        expect(result).to eq 2
+    end
+
+    it "unwraps content" do
+        present = Present.new
+        present.wrap(4)
+        result = present.unwrap
+        expect(result).to eq 4
+    end
 end
