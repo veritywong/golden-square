@@ -2,31 +2,21 @@ require 'present'
 
 RSpec.describe Present do
 
-    context "when content has already been wrapped" do
-        it "fails" do
-             present = Present.new
-             present.wrap("gift")
-             expect { present.wrap(1) }.to raise_error "A contents has already been wrapped."
-        end
-    end
-
-    context "when no contents have been wrapped" do
-        it "fails" do
-            present = Present.new
-            expect { present.unwrap }.to raise_error "No contents have been wrapped."
-        end
-    end
-
-    it "wraps content" do
+    it "fails if we wrap when we've already wrapped" do
         present = Present.new
-        result = present.wrap(2)
-        expect(result).to eq 2
+        present.wrap("gift")
+        expect { present.wrap("gift") }.to raise_error "A contents has already been wrapped."
     end
 
-    it "unwraps content" do
+    it "fails when no contents have been wrapped" do
         present = Present.new
-        present.wrap(4)
-        result = present.unwrap
-        expect(result).to eq 4
+        expect { present.unwrap }.to raise_error "No contents have been wrapped."
     end
+
+    it "wraps & unwraps a value" do
+        present = Present.new
+        present.wrap(2)
+        expect(present.unwrap).to eq 2
+    end
+
 end
