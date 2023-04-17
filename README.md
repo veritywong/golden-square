@@ -1,3 +1,3 @@
-# golden-square-phase one
+# golden-square-phase-one
 
 Testing bites exercies from the golden-square repository.
